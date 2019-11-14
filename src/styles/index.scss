@@ -1,1 +1,8 @@
 @import "~antd/dist/antd.css"; // or 'antd/dist/antd.less'
+body,
+html,
+#root,
+.wrapper {
+  height: 100%;
+  color: #202020;
+}
