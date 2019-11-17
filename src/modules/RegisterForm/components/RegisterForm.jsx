@@ -5,7 +5,7 @@ import { Button, Block } from "../../../components";
 
 export default class RegisterForm extends Component {
   render() {
-    const sucsess = true;
+    const sucsess = false;
     return (
       <div>
         <div className="auth__top">
