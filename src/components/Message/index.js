@@ -10,9 +10,24 @@ import classNames from "classnames";
 
 import "./Massage.scss";
 
-const Massage = ({ avatar, user = {}, text, date, isMe, isRead }) => {
+const Massage = ({
+  avatar,
+  user = {},
+  text,
+  date,
+  isMe,
+  isRead,
+  attachments,
+  isTyping
+}) => {
+  console.log(attachments);
   return (
-    <div className={classNames("massage", { "massage--isme": isMe })}>
+    <div
+      className={classNames("massage", {
+        "massage--isme": isMe,
+        " massage--is-typing": isTyping
+      })}
+    >
       <div className="massage__content">
         {isMe && (
           <img
@@ -27,12 +42,31 @@ const Massage = ({ avatar, user = {}, text, date, isMe, isRead }) => {
         </div>
 
         <div className="massage__info">
-          <div className="massage__bable">
-            <p className="massage__text">{text}</p>
+          <div>
+            <div className="massage__bable">
+              {text && <p className="massage__text">{text}</p>}
+              <div className="massage__typing">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
           </div>
-          <span className="massage__date">
-            {formatDistanceToNow(date, { addSuffix: true, locale: ru }, [])}
-          </span>
+          <div className="massage__attachments">
+            {attachments &&
+              attachments.map((item, index) => {
+                return (
+                  <div key={index} className="massage__attachments--items">
+                    <img src={item.url} alt="img_massage" />
+                  </div>
+                );
+              })}
+          </div>
+          {date && (
+            <span className="massage__date">
+              {formatDistanceToNow(date, { addSuffix: true, locale: ru }, [])}
+            </span>
+          )}
         </div>
       </div>
     </div>
@@ -43,7 +77,9 @@ Massage.propTypes = {
   avatar: propTypes.string,
   user: propTypes.object,
   date: propTypes.string,
-  text: propTypes.string
+  text: propTypes.string,
+  attachments: propTypes.array,
+  isTyping: propTypes.bool
 };
 
 export default Massage;

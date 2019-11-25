@@ -1,2 +1,22 @@
 import LoginForm from "../components/LoginForm";
-export default LoginForm;
+import { Formik, withFormik } from "formik";
+import validationForm from "../../../utils/validation";
+export default withFormik({
+  enableReinitialize: true,
+  mapPropsToValues: () => ({ name: "", password: "" }),
+  validate: values => {
+    let errors = {};
+
+    validationForm({ isAuth: true, values, errors });
+    return errors;
+  },
+
+  handleSubmit: (values, { setSubmitting }) => {
+    setTimeout(() => {
+      alert(JSON.stringify(values, null, 2));
+      setSubmitting(false);
+    }, 1000);
+  },
+
+  displayName: "LoginForm"
+})(LoginForm);
