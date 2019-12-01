@@ -83,26 +83,50 @@
       }
     }
   }
+  &--is-typing {
+    #{$self}__bable {
+      background-color: $message-typing-blue;
+      box-shadow: 0px 5px 5px rgba(54, 116, 255, 0.04);
+      padding: 15px 20px;
+    }
+  }
+  &--image {
+    #{$self}__attachments {
+      &--items {
+        img {
+          width: 150px;
+          height: 150px;
+        }
+      }
+    }
+  }
   &__typing {
     span {
       height: 8px;
       width: 8px;
       border-radius: 50%;
-      background: #c1c1c1;
+      background: $message-typing-circle;
       display: inline-block;
-      margin: 8px;
-      &:nth-of-type(1) {
-        -webkit-animation: cycleOne 1s ease-in-out infinite;
-        -webkit-animation-direction: normal;
-      }
+      margin-right: 7px;
+      animation-name: typingAnimation;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-duration: 1s;
       &:nth-of-type(2) {
-        -webkit-animation: cycleTwo 1s ease-in-out infinite;
-        -webkit-animation-direction: normal;
+        animation-duration: 0.4s;
       }
       &:nth-of-type(3) {
-        -webkit-animation: cycleThree 1s ease-in-out infinite;
-        -webkit-animation-direction: normal;
+        animation-duration: 0.7s;
       }
+    }
+  }
+
+  @keyframes typingAnimation {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 }

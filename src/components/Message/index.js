@@ -9,6 +9,9 @@ import { Massage as BaseMassage } from "antd";
 import classNames from "classnames";
 
 import "./Massage.scss";
+import Time from "../Time";
+import IconReaded from "../IconReaded";
+import DialogItem from "../DialogItem";
 
 const Massage = ({
   avatar,
@@ -20,22 +23,26 @@ const Massage = ({
   attachments,
   isTyping
 }) => {
-  console.log(attachments);
   return (
     <div
       className={classNames("massage", {
         "massage--isme": isMe,
-        " massage--is-typing": isTyping
+        " massage--is-typing": isTyping,
+        " massage--image": attachments && attachments.length === 1
       })}
     >
+      <div className="dialogs">
+        <DialogItem user={{}} message={{ time: new Date(), text: "aaasd" }} />
+      </div>
       <div className="massage__content">
-        {isMe && (
+        <IconReaded isMe={isMe} isRead={isRead} />
+        {/*  {isMe && isRead && (
           <img
             className="massage__icon-readed"
             src={isRead ? readed : noReaded}
             alt="chekedSvg"
           />
-        )}
+        )} */}
 
         <div className="massage__avatar">
           <img src={avatar} alt={`Avatar ${user.fullName}`} />
@@ -43,14 +50,18 @@ const Massage = ({
 
         <div className="massage__info">
           <div>
-            <div className="massage__bable">
-              {text && <p className="massage__text">{text}</p>}
-              <div className="massage__typing">
-                <span></span>
-                <span></span>
-                <span></span>
+            {(text || isTyping) && (
+              <div className="massage__bable">
+                {text && <p className="massage__text">{text}</p>}
+                {isTyping && (
+                  <div className="massage__typing">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                )}
               </div>
-            </div>
+            )}
           </div>
           <div className="massage__attachments">
             {attachments &&
@@ -64,7 +75,9 @@ const Massage = ({
           </div>
           {date && (
             <span className="massage__date">
-              {formatDistanceToNow(date, { addSuffix: true, locale: ru }, [])}
+              <Time date={date} />
+              {/* 
+              {formatDistanceToNow(date, { addSuffix: true, locale: ru }, [])} */}
             </span>
           )}
         </div>

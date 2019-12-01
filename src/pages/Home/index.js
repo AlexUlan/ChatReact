@@ -28,7 +28,7 @@ const Home = props => {
         text="Это текст сообщения "
         date={new Date()}
         isMe={true}
-        isRead={true}
+        isRead={false}
         attachments={[
           {
             url: "https://source.unsplash.com/100x100/?random=1&nature,water"
@@ -44,6 +44,14 @@ const Home = props => {
       <Massage
         avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTFh3TkH5vx3dMBxbpG5VcoQbEhwjJu8JgJwDDRdggfHBVS6tS8g&s"
         isTyping
+      />
+      <Massage
+        avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTFh3TkH5vx3dMBxbpG5VcoQbEhwjJu8JgJwDDRdggfHBVS6tS8g&s"
+        attachments={[
+          {
+            url: "https://source.unsplash.com/100x100/?random=1&nature,water"
+          }
+        ]}
       />
     </section>
   );
