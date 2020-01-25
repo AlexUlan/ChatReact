@@ -1,36 +1,75 @@
 import React from "react";
 import classNames from "classnames";
+import format from "date-fns/format";
+import { isToday } from "date-fns";
+import { generaiteAvatarFromHesh } from "./../../utils/index";
 
 import "./DialogItem.scss";
-import Time from "../Time";
 import IconReaded from "../IconReaded";
+import { Avatar } from "./../index";
 
 const getAvatar = avatar => {
   if (avatar) {
     return <img src={avatar} alt="" />;
   } else {
+    {
+      console.log(generaiteAvatarFromHesh("as412"));
+    }
+    return (
+      <div></div>
+      /*     <img
+        src={
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTFh3TkH5vx3dMBxbpG5VcoQbEhwjJu8JgJwDDRdggfHBVS6tS8g&s"
+        }
+        alt=""
+      /> */
+    );
+  }
+};
+/* Проверям когда было создано сообщения, если сегодня возврощаем олько минуты и часы, если нето то полную дату */
+const getMassageTimes = massate_at => {
+  if (isToday(massate_at)) {
+    return format(massate_at, "HH:ss");
+  } else {
+    return format(massate_at, "DD.MM.YYYY");
   }
 };
 
-const DialogItem = ({ user, message }) => {
+const DialogItem = ({ user, message, unReaded, isMe, created_at, text }) => {
   return (
-    <div className="dialogs__item">
+    <div
+      className={classNames("dialogs__item", {
+        "dialogs__item--online": user.isOnline
+      })}
+    >
       <div className="dialogs__item-avatar">
-        {getAvatar(
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTFh3TkH5vx3dMBxbpG5VcoQbEhwjJu8JgJwDDRdggfHBVS6tS8g&s"
-        )}
+        {
+          /*      {getAvatar(
+          user.avatar
+          /*  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTFh3TkH5vx3dMBxbpG5VcoQbEhwjJu8JgJwDDRdggfHBVS6tS8g&s" */
+          // )} */
+        }
+
+        <Avatar user={user} />
       </div>
+
       <div className="dialogs__item-info">
         <div className="dialogs__item-info-top">
-          <b>Федор</b>
+          <b>{user.fulname}</b>
           <span>
-            {/* <Time date={new Date()} /> */}
-            13:03
+            {getMassageTimes(created_at)}
+            {/*   <Time date={message.created_at} /> */}
           </span>
         </div>
+
         <div className="dialogs__item-info-bottom">
-          <p>NtrcnNtrcnNtrc...</p>
-          <IconReaded isMe={true} isRead={false} />
+          <p>{text}</p>
+          {isMe && <IconReaded isMe={true} isRead={true} />}
+          {unReaded > 0 && (
+            <div className="dialogs__item-info-bottom-count">
+              {unReaded > 9 ? "+9" : unReaded}
+            </div>
+          )}
         </div>
       </div>
     </div>

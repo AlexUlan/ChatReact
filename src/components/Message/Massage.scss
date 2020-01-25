@@ -83,6 +83,46 @@
       }
     }
   }
+  &--is-audio {
+    #{$self}__bable {
+      width: 250px;
+      position: relative;
+      overflow: hidden;
+    }
+    #{$self}__audio-info {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+    }
+    #{$self}__audio-btn {
+      button {
+        border: none;
+        width: 28px;
+        height: 28px;
+        border-radius: 30px;
+        background-color: #0f3997;
+        img {
+          cursor: pointer;
+          height: 18px;
+          margin-top: 3.5px;
+        }
+      }
+    }
+    #{$self}__audio-duration {
+      font-weight: 500;
+      color: #fff;
+      opacity: 0.5;
+      font-weight: 14px;
+    }
+    #{$self}__audio-progress {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      background-color: #418fff;
+      transition: width 0.9s ease;
+    }
+  }
   &--is-typing {
     #{$self}__bable {
       background-color: $message-typing-blue;
