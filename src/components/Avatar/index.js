@@ -5,13 +5,11 @@ import { generaiteAvatarFromHesh } from "./../../utils/index";
 import "./Avatar.scss";
 
 const Avatar = ({ user }) => {
-  console.log(user);
   if (user.avatar) {
     return <img className="avatar" src={user.avatar} alt="" />;
   } else {
     const { color, colorLightem } = generaiteAvatarFromHesh(user._id);
     const firstCharName = user.fulname;
-    console.log(color, colorLightem);
     return (
       <div
         style={{

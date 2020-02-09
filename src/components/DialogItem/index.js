@@ -4,7 +4,6 @@ import format from "date-fns/format";
 import { isToday } from "date-fns";
 import { generaiteAvatarFromHesh } from "./../../utils/index";
 
-import "./DialogItem.scss";
 import IconReaded from "../IconReaded";
 import { Avatar } from "./../index";
 
@@ -12,18 +11,7 @@ const getAvatar = avatar => {
   if (avatar) {
     return <img src={avatar} alt="" />;
   } else {
-    {
-      console.log(generaiteAvatarFromHesh("as412"));
-    }
-    return (
-      <div></div>
-      /*     <img
-        src={
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTFh3TkH5vx3dMBxbpG5VcoQbEhwjJu8JgJwDDRdggfHBVS6tS8g&s"
-        }
-        alt=""
-      /> */
-    );
+    return <div></div>;
   }
 };
 /* Проверям когда было создано сообщения, если сегодня возврощаем олько минуты и часы, если нето то полную дату */
@@ -43,13 +31,6 @@ const DialogItem = ({ user, message, unReaded, isMe, created_at, text }) => {
       })}
     >
       <div className="dialogs__item-avatar">
-        {
-          /*      {getAvatar(
-          user.avatar
-          /*  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTFh3TkH5vx3dMBxbpG5VcoQbEhwjJu8JgJwDDRdggfHBVS6tS8g&s" */
-          // )} */
-        }
-
         <Avatar user={user} />
       </div>
 

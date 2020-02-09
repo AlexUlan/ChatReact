@@ -8,9 +8,13 @@ export default hesh => {
     .map(char => (char.charCodeAt() >= 255 ? 255 : char.charCodeAt()));
 
   return {
-    color: fromRatio({ r, g, b }).toHexString(),
+    color: fromRatio({ r, g, b })
+      .lighten(15)
+      .saturate(10)
+      .toHexString(),
     colorLightem: fromRatio({ r, g, b })
       .lighten(40)
+      .saturate(20)
       .toHexString()
   };
 };
