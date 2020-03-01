@@ -4,7 +4,7 @@ import format from "date-fns/format";
 import { isToday } from "date-fns";
 import { generaiteAvatarFromHesh } from "./../../utils/index";
 
-import IconReaded from "../IconReaded";
+import IconReaded from "../Messages";
 import { Avatar } from "./../index";
 
 const getAvatar = avatar => {
@@ -16,19 +16,29 @@ const getAvatar = avatar => {
 };
 /* Проверям когда было создано сообщения, если сегодня возврощаем олько минуты и часы, если нето то полную дату */
 const getMassageTimes = massate_at => {
+  massate_at = new Date(massate_at);
   if (isToday(massate_at)) {
-    return format(massate_at, "HH:ss");
+    return format(massate_at, "hh:ss");
   } else {
-    return format(massate_at, "DD.MM.YYYY");
+    return format(massate_at, "dd.mm.yyyy");
   }
 };
 
-const DialogItem = ({ user, message, unReaded, isMe, created_at, text }) => {
+const DialogItem = ({
+  user,
+  message,
+  unReaded,
+  isMe,
+  created_at,
+  text,
+  onSelect
+}) => {
   return (
     <div
       className={classNames("dialogs__item", {
         "dialogs__item--online": user.isOnline
       })}
+      onClick={onSelect.bind(this, user._id)}
     >
       <div className="dialogs__item-avatar">
         <Avatar user={user} />
@@ -37,10 +47,7 @@ const DialogItem = ({ user, message, unReaded, isMe, created_at, text }) => {
       <div className="dialogs__item-info">
         <div className="dialogs__item-info-top">
           <b>{user.fulname}</b>
-          <span>
-            {getMassageTimes(created_at)}
-            {/*   <Time date={message.created_at} /> */}
-          </span>
+          <span>{getMassageTimes(created_at)}</span>
         </div>
 
         <div className="dialogs__item-info-bottom">

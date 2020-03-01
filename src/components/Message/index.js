@@ -11,7 +11,7 @@ import classNames from "classnames";
 
 import "./Massage.scss";
 import Time from "../Time";
-import IconReaded from "../IconReaded";
+import IconReaded from "../Messages";
 import DialogItem from "../DialogItem";
 import waveSvg from "../../assets/wave.svg";
 import PlaySvg from "../../assets/img/play.svg";
