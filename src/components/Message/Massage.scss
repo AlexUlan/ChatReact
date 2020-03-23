@@ -31,12 +31,14 @@
   &__avatar {
     display: flex;
     flex-direction: column-reverse;
-    img {
+    .avatar {
       border-radius: 50px;
       width: 33px;
       height: 33px;
       margin-bottom: 23px;
       margin-right: 13px;
+      font-size: 14px;
+      line-height: 31px;
     }
   }
   &__bable {

@@ -5,7 +5,14 @@ import orderBy from "lodash/orderBy";
 import "./Dialogs.scss";
 import { Input, Empty } from "antd";
 
-const Dialogs = ({ items, userId, onSearch, inputValue, onSelectDialog }) => {
+const Dialogs = ({
+  items,
+  userId,
+  onSearch,
+  inputValue,
+  onSelectDialog,
+  currentDialogId
+}) => {
   return (
     <div className="dialogs">
       <div className="dialogs-search">
@@ -26,6 +33,7 @@ const Dialogs = ({ items, userId, onSearch, inputValue, onSelectDialog }) => {
               unReaded="2"
               isMe={item.user._id === userId}
               onSelect={onSelectDialog}
+              currentDialogId={currentDialogId}
             />
           );
         })

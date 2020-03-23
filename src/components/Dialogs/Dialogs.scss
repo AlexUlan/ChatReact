@@ -6,6 +6,12 @@
     $item: &;
     display: flex;
     margin-bottom: 20px;
+    &--selected {
+      background-color: #3674ff;
+      &:not(:hover) {
+        color: #fff;
+      }
+    }
     &-avatar {
       position: relative;
       min-width: 40px;

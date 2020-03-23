@@ -6,10 +6,20 @@ const actions = {
     payload: items
   }),
   fetchMessages: dialogId => dispatch => {
-    messagesApi.getAllByDialogId(dialogId).then(({ data }) => {
-      dispatch(actions.setMessages(data));
-    });
-  }
+    dispatch(actions.setIsLoading(true));
+    messagesApi
+      .getAllByDialogId(dialogId)
+      .then(({ data }) => {
+        dispatch(actions.setMessages(data));
+      })
+      .catch(() => {
+        dispatch(actions.setIsLoading(false));
+      });
+  },
+  setIsLoading: loading => ({
+    type: "MESSAGES:SET_IS_LOADING",
+    payload: loading
+  })
 };
 
 export default actions;

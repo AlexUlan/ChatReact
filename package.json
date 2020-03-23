@@ -4,11 +4,13 @@
   "private": true,
   "dependencies": {
     "@ctrl/tinycolor": "^2.6.0",
+    "@navjobs/upload": "^3.2.0",
     "add": "^2.0.6",
     "antd": "^3.25.0",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
     "date-fns": "^2.7.0",
+    "emoji-mart": "^3.0.0",
     "formik": "^2.0.4",
     "lodash": "^4.17.15",
     "node-sass": "^4.13.0",

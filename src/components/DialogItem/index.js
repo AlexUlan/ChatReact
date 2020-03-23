@@ -31,12 +31,15 @@ const DialogItem = ({
   isMe,
   created_at,
   text,
-  onSelect
+  onSelect,
+  currentDialogId,
+  _id
 }) => {
   return (
     <div
       className={classNames("dialogs__item", {
-        "dialogs__item--online": user.isOnline
+        "dialogs__item--online": user.isOnline,
+        "dialogs__item--selected": currentDialogId === _id
       })}
       onClick={onSelect.bind(this, user._id)}
     >
@@ -46,7 +49,7 @@ const DialogItem = ({
 
       <div className="dialogs__item-info">
         <div className="dialogs__item-info-top">
-          <b>{user.fulname}</b>
+          <b>{user.fullname}</b>
           <span>{getMassageTimes(created_at)}</span>
         </div>
 

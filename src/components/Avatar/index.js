@@ -9,7 +9,7 @@ const Avatar = ({ user }) => {
     return <img className="avatar" src={user.avatar} alt="" />;
   } else {
     const { color, colorLightem } = generaiteAvatarFromHesh(user._id);
-    const firstCharName = user.fulname;
+    const firstCharName = user.fullname;
     return (
       <div
         style={{

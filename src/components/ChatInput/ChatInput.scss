@@ -19,6 +19,22 @@
     width: 60px;
     justify-content: space-between;
     margin-left: 15px;
+    &-upload-btn {
+      cursor: pointer;
+      input {
+        cursor: pointer;
+      }
+
+      &:hover button {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+  }
+  &__emoji-picker {
+    position: absolute;
+    bottom: 60px;
+    z-index: 5;
   }
   /*   .ant-btn-link {
     color: #202020;

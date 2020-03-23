@@ -16,6 +16,7 @@ import DialogItem from "../DialogItem";
 import waveSvg from "../../assets/wave.svg";
 import PlaySvg from "../../assets/img/play.svg";
 import PauseSvg from "../../assets/img/pause.svg";
+import Avatar from "../Avatar";
 
 const MessageAudio = ({ audio }) => {
   const [isplaing, setIsPlaing] = useState(false);
@@ -108,6 +109,7 @@ const Massage = ({
   attachments,
   isTyping
 }) => {
+ 
   return (
     <div
       className={classNames("massage", {
@@ -120,10 +122,9 @@ const Massage = ({
       <div className="massage__content">
         <IconReaded isMe={isMe} isRead={isRead} />
         <div className="massage__avatar">
-          <img
-            src={avatar}
-            // alt={`Avatar ${user.fullName}`
-          />
+          <Avatar user={user} />
+          {/* 
+          <img src={avatar} alt = "avatar"/> */}
         </div>
 
         <div className="massage__info">
@@ -162,7 +163,6 @@ const Massage = ({
           )}
         </div>
       </div>
-   
     </div>
   );
 };
