@@ -25,7 +25,7 @@
     "reset-css": "^5.0.1",
     "sass-loader": "^8.0.0",
     "tinycolor": "^0.0.1",
-    "yarn": "^1.19.1"
+    "yarn": "^1.22.0"
   },
   "scripts": {
     "start": "react-scripts start",
